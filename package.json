@@ -1,0 +1,26 @@
+{
+  "name": "LOGVICE",
+  "description": "Logvice logging platform",
+  "version": "0.0.1",
+  "homepage": "https://logvice.com",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logvice/platform.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.5",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.4",
+    "should": "^7.1.1",
+    "sinon": "^1.17.2"
+  }
+}

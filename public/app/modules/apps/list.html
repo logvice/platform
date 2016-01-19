@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>LogVice - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/monitor.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Nav Bar TOP -->
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <div class="icon-bar"></div>
+                    <div class="icon-bar"></div>
+                    <div class="icon-bar"></div>
+                </a>
+                <a class="brand" href="#">logvice</a>
+
+                <div class="nav-collapse">
+                    <ul id="toplink" class="nav navbar-nav  ">
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-trophy"></i> LOGS <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-bell"></i> ALL
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i> METRICS <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-bell"></i> ALL
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i> ALERTS <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-bell"></i> ALL
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav  pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                                <i class="icon-th-large"></i> SETTINGS <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-bell"></i> Set Up
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-warning-sign"></i> Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="topspace"></div>
+    <div class="row">
+        <div class="span3">
+            <div class="widget">
+                <div class="widget-header"><i class="icon-filter"></i>
+
+                    <h3>
+                        Filters
+                    </h3>
+                </div>
+                <div class="widget-content">
+                    <form action="index" method="get">
+                        <input name="page" value="0" type="hidden">
+
+                        <div>
+                            <label>Environments</label>
+                            <select id="envir" name="envir">
+                                <option selected="selected" value="ALL">All Environments</option>
+                                <option value="dev">Developments</option>
+                                <option value="stage">Stage Servers</option>
+                                <option value="productions">Productions</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Server Filter</label>
+                            <select id="server" name="server">
+                                <option selected="selected" value="all">All Servers</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Channel Filter</label>
+                            <select id="etype" name="type">
+                                <option selected="selected" value="all">All Types</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div>
+                            <label>Start Date</label>
+                            <input id="startdate" name="startdate" readonly="readonly">
+                        </div>
+                        <div>
+                            <label>End Date</label>
+                            <input id="enddate" name="enddate" value="18-08-2015" readonly="readonly">
+                        </div>
+                        <hr>
+                        <div>
+                            <label>Subtypes</label>
+                            <select id="subtype" name="subtype">
+                                <option selected="selected" value="all">All Subtypes</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Summery</label>
+                            <select id="summary" name="summary">
+                                <option selected="selected" value="all">All Summery</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Trouble</label>
+                            <select id="trouble" name="trouble">
+                                <option selected="selected" value="ALL">All Trouble</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div>
+                            <label>Game Name</label>
+                            <select id="games" name="skinid">
+                                <option selected="selected" value="ALL">All Games</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div>
+                            <label>Providers</label>
+                            <select id="provider" name="proid">
+                                <option selected="selected" value="ALL">All providers</option>
+                            </select>
+                        </div>
+                        <hr>
+
+                        <div>
+                            <label>Key Word</label>
+                            <input id="keyword" name="keyword">
+                        </div>
+                        <hr>
+                        <div>
+                            <input id="app" name="app" value="GMAPI" type="hidden">
+                            <input class="btn btn-primary" value="Search Filters" style="margin-top:-10px;"
+                                   type="submit">
+                            <a href="#" class="btn"
+                               style="margin-top:-10px;">Reset
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="span9">
+            <div id="noti" data-pageinx="2">
+            </div>
+            <div class="widget widget-nopad">
+                <div class="widget-header">
+                    <i class="icon-file"></i>
+
+                    <h3>
+                        Custom Logs
+                    </h3>
+
+                    <div class="resolveall">
+                        <span class="badge redo" style="margin-right:15px;">Total Sessions - 30062</span>
+                        <button id="allresolve" data-queryurl="?=" data-total="30062" class="btn btn-primary rbtn">
+                            Resolve All
+                        </button>
+                    </div>
+                </div>
+                <div class="widget-content">
+                    <table class="table">
+                        <tbody>
+                        <tr id="row1">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>9</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>Invalid Response
+                                    <dd>Token : <b>1439888147714281</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>GAP*NETBET</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>USERINFO</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>ALDERNEY STAGE</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Incorrect Format</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b> - 9801</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:55:47</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>betradarQA - (betradar1)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>BETRADAR</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row1" data-token="1439888147714281"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="1439888147714281" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row2">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>10</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>Invalid Response
+                                    <dd>Token : <b>1439888111117483</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>GAP*NETBET</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>USERINFO</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>ALDERNEY STAGE</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Incorrect Format</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b> - 9801</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:55:11</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>betradarQA - (betradar1)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>BETRADAR</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row2" data-token="1439888111117483"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="1439888111117483" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row3">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>11</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>HTTP Code Error
+                                    <dd>Token : <b>143988807376</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>DUMMY</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>BLOGIN</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG STAGE</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">HTTP</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b> - 1585</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:54:33</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>cosmin - (cosmin)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row3" data-token="143988807376"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988807376" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row4">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>16</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory pink ">VALIDATION</div>
+                            </td>
+                            <td>
+                                <h3>Not Unique Session
+                                    <dd>Token : <b>143988772886</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>NEXTCASINO</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>BLOGIN</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Launcher</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Rango (mobile)&nbsp;&nbsp; - 6502</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:48:48</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>Traceyw1 - (2189432)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row4" data-token="143988772886"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988772886" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row5">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>17</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory pink ">VALIDATION</div>
+                            </td>
+                            <td>
+                                <h3>Not Unique Session
+                                    <dd>Token : <b>143988766679</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>NEXTCASINO</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>BLOGIN</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Launcher</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Rango (mobile)&nbsp;&nbsp; - 6502</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:47:46</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>Traceyw1 - (2189432)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row5" data-token="143988766679"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988766679" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row6">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>18</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>Invalid Response
+                                    <dd>Token : <b>14398876213</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>LEGAQA</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>CANCEL</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>ALDERNEY STAGE</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Incorrect Format</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b> - </b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:47:01</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b> - ()</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row6" data-token="14398876213"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="14398876213" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row7">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>21</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory pink ">VALIDATION</div>
+                            </td>
+                            <td>
+                                <h3>Not Unique Session
+                                    <dd>Token : <b>143988747525</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>ARISTOCRAT</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>BLOGIN</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>ARISTOCRAT PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Launcher</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Best Things in Life - 1573</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:44:35</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>stmfttr - (stmfttr)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row7" data-token="143988747525"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988747525" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row8">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>21</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>CURL/SOAP Error
+                                    <dd>Token : <b>14398874628</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>NEXTCASINO</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>END</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Connection</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Rango (mobile)&nbsp;&nbsp; - 6502</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:44:22</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>Traceyw1 - (2189432)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row8" data-token="14398874628"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="14398874628" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row9">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>21</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory gree ">FREEROUND</div>
+                            </td>
+                            <td>
+                                <h3>Duplicate user
+                                    <dd>Token : <b>143988745916</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>EGGC</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>BLOGIN</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">BackOffice Configura</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Alice Adventure - 1525</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:44:19</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>EGFUCK000 - (EGFUCK000)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="yellowT"> CONTINUED</b></div>
+
+
+                                <button class="btn vbtn resolved" data-row="row9" data-token="143988745916"><i
+                                        class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988745916" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr id="row10">
+                            <td style="width:120px;padding-left:20px;padding-top:5px;">
+
+                                <div class="apptype"><i class="icon-bell"></i> GMAPI</div>
+                                <div class="bubble greeny">
+                                    <dd>0</dd>
+                                    <dt>Hours</dt>
+                                </div>
+                                <div class="bubble greeny">
+                                    <dd>21</dd>
+                                    <dt>Mins</dt>
+                                </div>
+                                <div class="colory purple ">WALLET</div>
+                            </td>
+                            <td>
+                                <h3>CURL/SOAP Error
+                                    <dd>Token : <b>143988745948</b></dd>
+                                </h3>
+                                <div class="tabby">
+                                    <table class="tinytab">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Licensee :</td>
+                                            <td style="width:50%;"><b>NEXTCASINO</b></td>
+                                            <td style="width:15%;text-align:right;">Trouble :</td>
+                                            <td><b>SBET</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Server :</td>
+                                            <td><b>LUXEMBURG PROD</b></td>
+                                            <td style="width:10%;text-align:right;">SubType :</td>
+                                            <td><b class="nocolor">Connection</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:10%;text-align:right;">Game :</td>
+                                            <td><b>Rango (mobile)&nbsp;&nbsp; - 6502</b></td>
+                                            <td style="text-align:right;">Timestamp :</td>
+                                            <td><b>2015-08-18 09:44:19</b></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="player">Player Details: <b>Traceyw1 - (2189432)</b></div>
+                                <div style="float:right;color:#c63232;font-size:12px;"><b>ISOFTBET</b></div>
+                            </td>
+                            <td class="w_150">
+                                <div class="status">
+                                    <dd>Status:</dd>
+                                    <b class="redT"> CRASHED</b></div>
+                                <button class="btn vbtn resolved" data-row="row10" data-token="143988745948">
+                                    <i class="icon-ok"></i> Mark Resolved
+                                </button>
+                                <button data-token="143988745948" class="btn vbtn btn-info checkdetails"><i
+                                        class="icon-eye-open"></i> Check Details
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end widget -->
+            <ul class="pagination">
+                <li class="active">
+                    <a>1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-chevron-right"></i>
+                    </a>
+                </li>
+                <li><a href="#">
+                    <i class="icon-step-forward"></i>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
+        <h3>Change Status</h3>
+    </div>
+    <div class="modal-body">
+        <p>&nbsp;?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="yesid" class="btn btn-primary" data-dismiss="modal">YES</a>
+        <a href="#" id="noid" class="btn" data-dismiss="modal">NO</a>
+    </div>
+</div>
+<script src="js/jquery-1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/moment.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/datecontrol.js"></script>
+<script src="js/mover.js"></script>
+<script>
+    var controller = 'index';
+</script>
+<script src="js/custom.js"></script>
+</body>
+</html>

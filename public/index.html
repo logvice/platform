@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>logvice: logging simplified</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/monitor.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">LOGVICE</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
+            <li ng-class="{ active: isActive('/login')}"><a href="#/login">Login</a></li>
+            <li ng-class="{ active: isActive('/register')}"><a href="#/register">Register</a></li>
+            <li ng-class="{ active: isActive('/contact')}"><a href="#/contact">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-sm-12">
+        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+             ng-if="flash" ng-bind="flash.message">
+        </div>
+        <div ng-view class="view-frame"></div>
+    </div>
+</div>
+<script src="assets/vendor/requirejs/require.js" data-main="app/main"></script>
+</body>
+</html>
