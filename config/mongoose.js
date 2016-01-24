@@ -1,10 +1,20 @@
-var config = require('./config'),
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
+var	config = require('./config'),
     mongoose = require('mongoose');
 
-module.exports = function () {
+// Define the Mongoose configuration method
+module.exports = function() {
+    // Use Mongoose to connect to MongoDB
     var db = mongoose.connect(config.db);
 
-    require('../app/models/user.server.model');
+    // Load the application models
+    require('../app/models/appModel');
+    require('../app/models/logModel');
+    require('../app/models/userModel');
 
+    // Return the Mongoose connection instance
     return db;
 };

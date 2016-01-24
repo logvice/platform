@@ -5,6 +5,7 @@ var logModel = new Schema({
     appId: {type: String, trim: true},
     channel: {type: String, trim: true},
     message: {type: String, trim: true},
+    environment: {type: String, trim: true},
     severity: {type: Number},
     host: {type: String, trim: true},
     protocol: {type: String, trim: true},

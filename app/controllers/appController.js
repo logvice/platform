@@ -1,4 +1,10 @@
-var appController = function (appModel) {
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
+var appModel = require('mongoose').model('AppModel');
+
+var appController = function () {
 
     var get = function (request, response) {
         appModel.find(request.query, function (error, logs) {

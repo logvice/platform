@@ -1,4 +1,10 @@
-var logController = function (logModel) {
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
+var logModel = require('mongoose').model('LogModel');
+
+var logController = function () {
 
     var get = function (request, response) {
         logModel.find(request.query, function (error, logs) {

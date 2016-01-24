@@ -1,9 +1,8 @@
 var express = require('express');
 
-var routers = function (logModel) {
+module.exports = function(app) {
 
-    var logRouters = express.Router();
-    var logController = require('../controllers/logController')(logModel);
+    var logController = require('../controllers/logController');
 
     logRouters.use('/:id', function (request, response, next) {
         logModel.findById(request.params.id, function (error, log) {

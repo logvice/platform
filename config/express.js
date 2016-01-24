@@ -34,8 +34,9 @@ module.exports = function () {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    require('../app/routes/index.server.routes.js')(app);
-    require('../app/routes/users.server.routes.js')(app);
+    require('../app/routes/appRoutes.js')(app);
+    require('../app/routes/logRoutes.js')(app);
+    require('../app/routes/userRoutes.js')(app);
 
     app.use(express.static('./public'));
 

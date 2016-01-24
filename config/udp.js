@@ -1,3 +1,7 @@
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
 var config = require('./config');
 var dgram = require('dgram');
 var log = require('./log');
