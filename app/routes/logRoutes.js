@@ -1,31 +1,24 @@
-var express = require('express');
+// Invoke 'strict' JavaScript mode
+'use strict';
 
-module.exports = function(app) {
+// Load the module dependencies
+var express = require('express'),
+    router = express.Router(),
+    logController = require('../controllers/logController');
 
-    var logController = require('../controllers/logController');
+module.exports = function (app) {
 
-    logRouters.use('/:id', function (request, response, next) {
-        logModel.findById(request.params.id, function (error, log) {
-            if (error) {
-                response.status(500).send(error);
-            } else if (log) {
-                request.log = log;
-                next();
-            } else {
-                response.status(404).send("Log not found");
-            }
-        })
+    router.use('/:id', function (request, response, next) {
+        logController.findById(request, response, next);
     });
 
-    logRouters.route('/')
+    router.route('/')
         .get(logController.get)
         .post(logController.post);
 
-    logRouters.route('/:id')
+    router.route('/:id')
         .get(logController.getById)
         .patch(logController.patchById);
 
-    return logRouters;
+    app.use('/logs', router);
 };
-
-module.exports = routers;

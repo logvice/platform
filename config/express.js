@@ -18,7 +18,7 @@ module.exports = function () {
     }
 
     app.use(bodyParser.urlencoded({
-        extends: true
+        extended: true
     }));
 
     app.use(flash());

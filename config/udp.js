@@ -4,8 +4,7 @@
 // Load the module dependencies
 var config = require('./config');
 var dgram = require('dgram');
-var log = require('./log');
-var parser = require('./parser');
+var log = require('../app/libs/log');
 
 module.exports = function () {
     // create UDP server, returns server instance
@@ -26,7 +25,13 @@ module.exports = function () {
         udpServer.on('message', function (msg, requestInfo) {
             try {
                 //var logMessage = JSON.parse(msg);
-                persist.make(parser.make(msg.toString('utf8')));
+                var message = msg.toString('utf8');
+                if(message.indexOf('Buffer')){
+                    message = message.toString('utf8');
+                }
+
+                log.info(message);
+
             } catch (e) {
                 log.warn(e);
             }

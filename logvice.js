@@ -5,7 +5,8 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Load the module dependencies
-var mongoose = require('./config/mongoose'),
+var config = require('./config/config'),
+    mongoose = require('./config/mongoose'),
     express = require('./config/express'),
     passport = require('./config/passport');
 
@@ -18,11 +19,10 @@ var app = express();
 // Configure the Passport middleware
 var passport = passport();
 
-// Use the Express application instance to listen to the '3000' port
-app.listen(3000);
+app.listen(config.port, config.host);
 
 // Log the server status to the console
-console.log('Server running at http://localhost:3000/');
+console.log('Server running at http://' + config.host + ':'+ config.port +'/');
 
 // Use the module.exports property to expose our Express application instance for external usage
 module.exports = app;

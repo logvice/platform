@@ -1,33 +1,25 @@
-var express = require('express');
+// Invoke 'strict' JavaScript mode
+'use strict';
 
-var routers = function (appModel) {
+// Load the module dependencies
+var express = require('express'),
+    router = express.Router(),
+    appController = require('../controllers/appController');
 
-    var appRouters = express.Router();
-    var appController = require('../controllers/appController')(appModel);
+module.exports = function (app) {
 
-    appRouters.use('/:id', function (request, response, next) {
-        appModel.findById(request.params.id, function (error, app) {
-            if (error) {
-                response.status(500).send(error);
-            } else if (log) {
-                request.app = app;
-                next();
-            } else {
-                response.status(404).send("App not found");
-            }
-        })
+    router.use('/:id', function (request, response, next) {
+        appController.findById(request, response, next);
     });
 
-    appRouters.route('/')
+    router.route('/')
         .get(appController.get)
         .post(appController.post);
 
-    appRouters.route('/:id')
+    router.route('/:id')
         .get(appController.getById)
         .patch(appController.patchById)
         .delete(appController.deleteById);
 
-    return appRouters;
+    app.use('/apps', router);
 };
-
-module.exports = routers;

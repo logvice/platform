@@ -1,3 +1,7 @@
+// Invoke 'strict' JavaScript mode
+'use strict';
+
+// Load the module dependencies
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
