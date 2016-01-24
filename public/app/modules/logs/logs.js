@@ -6,12 +6,11 @@ define(function (require) {
 
     require("ngRoute");
     require("./services");
-    require("./animations");
     require("./controllers");
     require("./filters");
 
     var logsModule = angular.module('logsModule', [
-        'ngRoute', 'logsServices', 'logsAnimations', 'logsControllers', 'logsFilters'
+        'ngRoute', 'logsServices', 'logsControllers', 'logsFilters'
     ]);
 
     logsModule.config(['$routeProvider',

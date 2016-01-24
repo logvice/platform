@@ -6,12 +6,11 @@ define(function (require) {
 
     require("ngRoute");
     require("./services");
-    require("./animations");
     require("./controllers");
     require("./filters");
 
     var appsModule = angular.module('appsModule', [
-        'ngRoute', 'appsServices', 'appsAnimations', 'appsControllers', 'appsFilters'
+        'ngRoute', 'appsServices', 'appsControllers', 'appsFilters'
     ]);
 
     appsModule.config(['$routeProvider',
