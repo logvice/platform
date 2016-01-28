@@ -1,6 +1,45 @@
 <div class="col-sm-3">
-    filters goes here
-</div>
+    <div class="widget">
+        <div class="widget-header"><i class="icon-filter"></i>
+
+            <h3>
+                Filters
+            </h3>
+        </div>
+        <div class="widget-content">
+            <form action="index" method="get">
+                <input name="page" value="0" type="hidden"/>
+                <label>Environments</label>
+                <select id="envir" name="envir">
+                    <option selected="selected" value="ALL">All Environments</option>
+                    <option value="dev">Developments</option>
+                    <option value="stage">Stage Servers</option>
+                    <option value="productions">Productions</option>
+                </select>
+                <label>Server Filter</label>
+                <select id="server" name="server">
+                    <option selected="selected" value="all">All Servers</option>
+                </select>
+                <label>Channel Filter</label>
+                <select id="etype" name="type">
+                    <option selected="selected" value="all">All Types</option>
+                </select>
+                <hr>
+                <label>Start Date</label>
+                <input id="startdate" name="startdate" readonly="readonly"/>
+                <label>End Date</label>
+                <input id="enddate" name="enddate" value="18-08-2015" readonly="readonly"/>
+                <hr>
+                <label>Key Word</label>
+                <input id="keyword" name="keyword" />
+                <hr>
+                <input id="app" name="app" value="" type="hidden"/>
+                <input class="btn btn-primary" value="Search Filters" type="submit">
+                <a href="#" class="btn">Reset</a>
+            </form>
+        </div>
+    </div>
+</div></div>
 <div class="col-sm-9">
     results goes here
 </div>

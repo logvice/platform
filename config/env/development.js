@@ -13,9 +13,7 @@ module.exports = {
     // colored output
     coloredOutput: true,
     // database config
-    dbHost: 'localhost',
-    dbPort: 27017,
-    dbName: 'logvice',
+    mongoUri: 'mongodb://localhost/logvice',
     dbCollection: 'logs',
     //session secret
     sessionSecret: 'developmentSessionSecret'
