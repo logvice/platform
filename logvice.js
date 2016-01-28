@@ -3,7 +3,9 @@
 
 // Set the 'NODE_ENV' variable
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
+if(process.env.OPENSHIFT_NODEJS_PORT){
+    process.env.NODE_ENV = 'openshift';
+}
 // Load the module dependencies
 var config = require('./config/config'),
     mongoose = require('./config/mongoose'),
