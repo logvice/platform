@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/logvice/platform.git"
   },
+  "scripts": {
+    "start": "node logvice.js"
+  },
+  "main": "logvice.js",
   "dependencies": {
     "body-parser": "^1.14.2",
     "compression": "^1.6.1",
