@@ -12,8 +12,7 @@ module.exports = {
     // colored output
     coloredOutput: true,
     // database config
-    mongoUri: 'mongodb://localhost/logvice',
-    dbCollection: 'logs',
+    mongoDbURL: 'mongodb://admin:VaA9geiAUd9Z@' + process.env.OPENSHIFT_MONGODB_DB_URL + 'dev',
     //session secret
     sessionSecret: 'developmentSessionSecret'
 };

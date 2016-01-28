@@ -1,9 +1,9 @@
 "use strict";
+
 module.exports = {
+    host: '127.0.0.1',
     // tcp listening port
-    tcpPort: 80,
-    // web socket listening port
-    wsPort: 8080,
+    port: 3000,
     // udp listening port, udp can only be used to publish messages
     udpPort: 514,
     // max size of message frame, in chars(not bytes)
@@ -13,8 +13,7 @@ module.exports = {
     // colored output
     coloredOutput: true,
     // database config
-    dbHost: "localhost",
-    dbPort: 27017,
-    dbName: "logvice",
-    dbCollection: "logs"
+    mongoDbURL: 'mongodb://localhost/logvice',
+    //session secret
+    sessionSecret: 'developmentSessionSecret'
 };

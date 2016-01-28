@@ -13,8 +13,7 @@ module.exports = {
     // colored output
     coloredOutput: true,
     // database config
-    mongoUri: 'mongodb://localhost/logvice',
-    dbCollection: 'logs',
+    mongoDbURL: 'mongodb://localhost/logvice',
     //session secret
     sessionSecret: 'developmentSessionSecret'
 };
